@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy Admin Panel</title>
+    <meta name="author" content="Karthik Csv">
+    <meta name="description" content="">
+    <!-- for sorting features -->
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="/dev/kennedy.js"></script>
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+
+        .bg-sidebar {
+            background: #0b1846;
+        }
+
+        .cta-btn {
+            color: #121d46;
+        }
+
+        .upgrade-btn {
+            background: #0d1c54;
+        }
+
+        .upgrade-btn:hover {
+            background: #0b1a4f;
+        }
+
+        .active-nav-link {
+            background: #0b1b53;
+        }
+
+        .nav-item:hover {
+            background: #0a1643;
+        }
+
+        .account-link:hover {
+            background: #09153f;
+        }
+    </style>
+
+
+    <!-- Header and footer script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(function () {
+            $("#header").load("/dev/admin-header.html");
+            $("#sidebar").load("/dev/admin-sidebar.html");
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100 flex">
+
+    <div id="sidebar"></div>
+    <div class="w-full flex flex-col h-screen overflow-y-hidden">
+
+        <div id="header"></div>
+
+        <div class="w-full overflow-x-hidden border-t flex flex-col">
+            <main class="w-full flex-grow p-6">
+                <p class="pt-4 text-xl pb-8 flex items-center">
+                    <i class="fas fa-list mr-3"></i> Courses Details
+                </p>
+
+                <div class="flex flex-wrap">
+                    <div class="w-full my-6 pr-0 lg:pr-2">
+                        <div class="leading-loose">
+                            <form class="p-10 bg-white rounded shadow-xl">
+                                <div class="">
+                                    <label class="block text-sm text-blue-700"
+                                        for="specialization">Specialization</label>
+                                    <input class="w-full px-5 py-1 text-blue-800 font-bold bg-blue-100/40 rounded"
+                                        id="specialization" name="specialization" type="text" required="" placeholder=""
+                                        aria-label="specialization">
+                                </div>
+                                <div class="mt-3">
+                                    <label class="block text-sm text-blue-700" for="grid-state">
+                                        Select Stream
+                                    </label>
+                                    <div class="relative">
+                                        <select
+                                            class="block appearance-none w-full bg-blue-100/40 border border-blue-100 text-blue-800 font-bold py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            name="level-dropdown" id="level-dropdown">
+                                            <option value="0" selected="selected">Select Stream </option>
+                                            <option value="cr">CERTIFICATE PROGRAM</option>
+                                            <option value="ug">UNDERGRADUATE</option>
+                                            <option value="pg">POST GRADUATE</option>
+                                            <option value="rp">RESEARCH PROGRAM</option>
+                                        </select>
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-blue-800 font-bold">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <label class="block text-sm text-blue-700" for="name">Course</label>
+                                    <input class="w-full px-5 py-1 text-blue-800 font-bold bg-blue-100/40 rounded"
+                                        id="name" name="name" type="text" required="" placeholder="" aria-label="Name">
+                                </div>
+                                <div class="mt-3">
+                                    <label class="block text-sm text-blue-700" for="grid-state">
+                                        Pattern
+                                    </label>
+                                    <div class="relative">
+                                        <select
+                                            class="block appearance-none w-full bg-blue-100/40 border border-blue-100 text-blue-800 font-bold py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            name="pattern-dropdown" id="pattern-dropdown">
+                                            <option value="">Select Pattern </option>
+                                            <option value="yr">YEAR</option>
+                                            <option value="sem">SEMESTER</option>
+                                        </select>
+                                        <div
+                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-blue-800 font-bold">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20">
+                                                <path
+                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="mt-3">
+                                    <label class=" block text-sm text-blue-700" for="message">Message</label>
+                                    <textarea class="w-full px-5 py-2 text-blue-800 font-bold bg-blue-100/40 rounded" id="message" name="message"
+                                        rows="6" required="" placeholder="Your inquiry.." aria-label="Email"></textarea>
+                                </div> -->
+                                <div class="mt-6">
+                                    <button onclick="onCourseDataSubmitClicked()" id="publishBtn" class="px-4 py-1 text-white font-light tracking-wider bg-blue-900 rounded"
+                                        type="button">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
+
+    <script>
+        window.onload = function () {
+            init();
+        }
+        let courseId = "";
+        let titleInput = document.getElementById("name");
+        let categoryInput = document.getElementById("specialization");
+        let levelDropdownInput = document.getElementById("level-dropdown");
+        let patternDropdownInput = document.getElementById("pattern-dropdown");
+        function init() {
+            const params = new URLSearchParams(document.location.search);
+            courseId = params.get("id");
+            const action = params.get("action");
+            let course;
+            console.log(courseId); //show C
+            if (!courseId || typeof courseId !== "string" || courseId.length <= 1) {
+                alert("Invalid page request");
+                history.back();
+            } else {
+                if (courseId === "new") {
+
+                } else {
+                    if (action === "view") {
+                        titleInput.disabled = true;
+                        categoryInput.disabled = true;
+                        levelDropdownInput.disabled = true;
+                        patternDropdownInput.disabled = true;
+                        hideBtn("publishBtn");
+                    }
+                    //get course data and display fields
+                    getCourseById(courseId, function (res) {
+                        course = res.data;
+                        titleInput.value = course.title;
+                        categoryInput.value = course.category;
+                        for (let index = 0; index < patternDropdownInput.options.length; index++) {
+                            const patternDropdownInputOption = patternDropdownInput.options[index];
+                            if (patternDropdownInputOption.label === course.pattern) {
+                                patternDropdownInputOption.selected = true;
+                            } else {
+                                patternDropdownInputOption.selected = false;
+                            }
+                        }
+
+                        for (let index = 0; index < levelDropdownInput.options.length; index++) {
+                            const levelDropdownInputOption = levelDropdownInput.options[index];
+                            if (levelDropdownInputOption.label === course.level) {
+                                levelDropdownInputOption.selected = true;
+                            } else {
+                                levelDropdownInputOption.selected = false;
+                            }
+                        }
+                    }, function () {
+                        history.back();
+                    })
+                }
+            }
+        }
+        function onCourseDataSubmitClicked(e) {
+            let title = titleInput.value;
+            let category = categoryInput.value;
+            let level = levelDropdownInput.options[levelDropdownInput.selectedIndex].label;
+            let pattern = patternDropdownInput.options[patternDropdownInput.selectedIndex].label;
+            let reqBody = {
+                title,
+                category,
+                level,
+                pattern
+            }
+            if (courseId !== "new") {
+                reqBody.id = courseId;
+            }
+            disableBtn("publishBtn", "Submitting data, Please wait...")
+            let newUpdateFunction = (courseId === "new") ? createCourse : updateCourse;
+            newUpdateFunction(reqBody, function (res) {
+                enableBtn("publishBtn", "Submit");
+                window.location.href = "/dev/admin-courses.html"
+            }, function () {
+                enableBtn("publishBtn", "Submit");
+            });
+            return false;
+        }
+    </script>
+</body>
+
+</html>

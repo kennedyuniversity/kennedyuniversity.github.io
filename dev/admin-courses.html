@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy Admin Panel</title>
+    <meta name="author" content="Karthik Csv">
+    <meta name="description" content="">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="/dev/kennedy.js"></script>
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+
+        .bg-sidebar {
+            background: #0b1846;
+        }
+
+        .cta-btn {
+            color: #121d46;
+        }
+
+        .upgrade-btn {
+            background: #0d1c54;
+        }
+
+        .upgrade-btn:hover {
+            background: #0b1a4f;
+        }
+
+        .active-nav-link {
+            background: #0b1b53;
+        }
+
+        .nav-item:hover {
+            background: #0a1643;
+        }
+
+        .account-link:hover {
+            background: #09153f;
+        }
+    </style>
+
+
+    <!-- Header and footer script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(function () {
+            $("#header").load("/dev/admin-header.html");
+            $("#sidebar").load("/dev/admin-sidebar.html");
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100 flex">
+
+    <div id="sidebar"></div>
+    <div class="w-full flex flex-col h-screen overflow-y-hidden">
+
+        <div id="header"></div>
+
+        <div class="w-full overflow-x-hidden border-t flex flex-col">
+            <main class="w-full flex-grow p-6">
+                <p class="pt-4 text-xl pb-8 flex items-center">
+                    <i class="fas fa-list mr-3"></i> Courses Details
+                </p>
+
+                <button id="statusButton" type="button" onclick="onAddCourseClick()"
+                    class="bg-sky-500 hover:bg-gray-800 pl-5 pr-5 mb-5 rounded-3xl text-white h-10">
+                    Add Course</button>
+
+                <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                    <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+
+                        <div class="p-3">
+                            <table class="table-responsive w-full rounded">
+                                <thead>
+                                    <tr class="text-blue-700">
+                                        <th class="border w-1/6 px-4 py-2">Actions</th>
+                                        <th class="border w-1/6 px-4 py-2">Course Name</th>
+                                        <th class="border w-1/6 px-4 py-2">Course Category</th>
+                                        <th class="border w-1/6 px-4 py-2">Level</th>
+                                        <th class="border w-1/6 px-4 py-2">Pattern</th>
+                                        <th class="border w-1/6 px-4 py-2">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="coursesTBody">
+                                    <tr>
+                                        <td class="border px-4 py-2">
+                                            <a class="bg-sky-800 cursor-pointer rounded p-1 mx-1 text-white">
+                                                <i class="fas fa-eye"></i></a>
+                                            <a class="bg-sky-800 cursor-pointer rounded p-1 mx-1 text-white">
+                                                <i class="fas fa-edit"></i></a>
+                                            <!-- <a class="bg-sky-800 cursor-pointer rounded p-1 mx-1 text-red-400">
+                                                                                        <i class="fas fa-trash"></i> -->
+                                            </a>
+                                        </td>
+                                        <td class="border px-4 py-2">Loading..</td>
+                                        <td class="border px-4 py-2">Loading..</td>
+                                        <td class="border px-4 py-2">Loading..</td>
+                                        <td class="border px-4 py-2">Loading..</td>
+
+                                        <td class="border px-4 py-2">
+                                            <p>checking status..</p>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- status popup -->
+    <div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true"
+        id="statusUpdatePopUp">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 backdrop-blur-xl bg-white/30 transition-opacity" aria-hidden="true">
+            </div>
+
+            <!-- This element is to trick the browser into centering the modal contents. -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div
+                            class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-sky-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <!-- Heroicon name: outline/exclamation -->
+                            <svg class="h-6 w-6 text-sky-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900 mb-5" id="modal-title">
+                                Update Status Here
+                            </h3>
+                            <div class="flex items-center mb-4">
+                                <input id="pendingRadioInput" type="radio" value="" name="default-radio"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+                                    disabled>
+                                <label for="default-radio-1"
+                                    class="ml-2 text-lg font-medium text-gray-900">Pending</label>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <input id="activeRadioInput" type="radio" value="" name="default-radio"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                <label for="default-radio-1"
+                                    class="ml-2 text-lg font-medium text-gray-900">Active</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input id="inActiveRadioInput" type="radio" value="" name="default-radio"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2">
+                                <label for="default-radio-2"
+                                    class="ml-2 text-lg font-medium text-gray-900">Inactive</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" id="statusChangeConfirmButton" onclick="onStatusChange()"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-sky-600 text-base font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 sm:ml-3 sm:w-auto sm:text-sm">Update</button>
+                    <button type="button" id="closeButton" onclick="cancelStatusChangePopUp()"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+
+
+    <script>
+        window.onload = function () {
+            init();
+        }
+
+        function init() {
+            loadCourses("coursesTBody");
+        }
+        function onAddCourseClick() {
+            window.location.href = "/dev/admin-coursesInner.html?id=new";
+        }
+        cancelStatusChangePopUp();
+        function cancelStatusChangePopUp() {
+            statusUpdatePopUp.style.display = "none";
+        }
+        function showStatusChangePopUp() {
+            let selectedCourse = courses[selectedCourseId];
+            document.getElementById("pendingRadioInput").checked = selectedCourse.status === 1 ? true : false;
+            document.getElementById("activeRadioInput").checked = selectedCourse.status === 2 ? true : false;
+            document.getElementById("inActiveRadioInput").checked = selectedCourse.status === -2 ? true : false;
+            statusUpdatePopUp.style.display = "block";
+        }
+        function onStatusChange() {
+            let status = document.getElementById("pendingRadioInput").checked ? 1 : document.getElementById("activeRadioInput").checked ? 2 : -2;
+            let selectedCourse = courses[selectedCourseId];
+            selectedCourse.status = status;
+            let reqObject = {
+                selectedStatus: status
+            }
+            disableBtn("statusChangeConfirmButton", "Updating status, Please wait...")
+            updateCourseStatus(selectedCourseId, reqObject, function (res) {
+                cancelStatusChangePopUp();
+                enableBtn("statusChangeConfirmButton", "Update status");
+                window.location.reload();
+            }, function () {
+                enableBtn("statusChangeConfirmButton", "Update status");
+            });
+        }
+    </script>
+</body>
+
+</html>

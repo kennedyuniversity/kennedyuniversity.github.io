@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="app" class="relative bg-gradient-to-br from-sky-100 to-sky-300 mx-4 rounded-2xl my-5 shadow-xl">
+        <div class="max-w-full mx-auto md:mx-4 px-4 sm:px-3">
+            <div class="flex justify-between items-center lg:space-x-10">
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <!-- <span class="sr-only">Kennedy University</span> -->
+                    <img src="/logo.png" style="width: 120px;">
+                </div>
+                <div class="md:-mr-2 mr-5 -my-2 xl:hidden">
+                    <button type="button"
+                        class="bg-[#1D2B4F] pl-2 pb-1 rounded-md p-2 inline-flex items-center justify-center text-white hover:text-[#1D2B4F] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                        aria-expanded="false" @click="menu = !menu">
+                        <span class="sr-only">Open menu</span>
+                        <!-- Heroicon name: outline/menu -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                <nav class="hidden xl:flex space-x-5">
+                    <a href="/" class="text-base font-medium text-blue-900 hover:text-gray-500">
+                        Home
+                    </a>
+                    <script>
+                        let isDesktop = false;
+                        if (window.matchMedia('(min-width: 1280px)').matches) {
+                            isDesktop = true;
+                        }
+
+                        document.addEventListener('mouseup', function (e) {
+                            // if (!isDesktop) {
+                            //     console.log("This is a mobile device");
+                            //     return;
+                            // }
+                            let divIds = ["departments", "more"];
+                            let suffixBtnId = "Btn";
+                            let suffixSubDivId = "SubDiv";
+
+                            if (!isDesktop) {
+                                hideElementOnClickAway("mobileMenu", "mobileMenu" + suffixBtnId, "mobileMenu", e);
+                            } else {
+                                for (let index = 0; index < divIds.length; index++) {
+                                    const eleDivId = divIds[index];
+                                    hideElementOnClickAway(eleDivId, eleDivId + suffixBtnId, eleDivId + suffixSubDivId, e);
+                                }
+                            }
+                        });
+                        function hideElementOnClickAway(eleId, eleBtnId, eleSubDivId, e) {
+                            var container = document.getElementById(eleId);
+                            var containerBtn = document.getElementById(eleBtnId);
+                            var coursesSubDiv = document.getElementById(eleSubDivId);
+                            if (!container.contains(e.target)) {
+                                if (coursesSubDiv && window.getComputedStyle(coursesSubDiv).display === "block") {
+                                    containerBtn.click();
+                                }
+                            }
+                        }
+                    </script>
+
+                    
+                    <a href="/public/academicPartners.html"
+                        class="text-base font-medium text-blue-900 hover:text-gray-500">
+                        Academic Partners
+                    </a>
+                    <a href="/public/studentCorner.html"
+                        class="text-base font-medium text-blue-900 hover:text-gray-500">
+                        Student Corner
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!--
+        Mobile menu, show/hide based on mobile menu state.
+    
+        Entering: "duration-200 ease-out"
+          From: "opacity-0 scale-95"
+          To: "opacity-100 scale-100"
+        Leaving: "duration-100 ease-in"
+          From: "opacity-100 scale-100"
+          To: "opacity-0 scale-95"
+      -->
+        <transition enter-active-class="transition duration-200 ease-out"
+            leave-active-class="transition duration-100 ease-in" enter-class="opacity-0 scale-95"
+            enter-to-class="opacity-100 scale-100" leave-class="opacity-100 scale-100"
+            leave-to-class="opacity-0 scale-95">
+            <div v-if="menu" id="mobileMenu"
+                class="absolute z-50 top-0 inset-x-0 p-2 transition transform origin-top-right xl:hidden">
+                <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+                    <div class="pt-5 pb-6 px-5">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <img src="/logo.png" style="width: 80px;">
+                            </div>
+                            <div class="-mr-2">
+                                <button type="button" id="mobileMenuBtn"
+                                    class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                                    @click="menu = !menu">
+                                    <span class="sr-only">Close menu</span>
+                                    <!-- Heroicon name: outline/x -->
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <nav class="grid gap-y-4">
+                                <a href="/" class="text-base font-medium text-gray-900 hover:text-gray-500">
+                                    Home
+                                </a>
+                                <a href="/public/academicPartners.html"
+                                    class="text-base font-medium text-gray-900 hover:text-gray-500">
+                                    Academic Partners
+                                </a>
+
+                                <a href="/public/studentCorner.html"
+                                    class="text-base font-medium text-gray-900 hover:text-gray-500">
+                                    Student Corner
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </transition>
+    </div>
+    <script>
+        const eventBus = {
+            list: new Map(),
+            on(eventType, eventAction) {
+                this.list.has(eventType) || this.list.set(eventType, []);
+                if (this.list.get(eventType)) this.list.get(eventType).push(eventAction);
+                return this;
+            },
+
+            emit(eventType, ...args) {
+                this.list.get(eventType) &&
+                    this.list.get(eventType).forEach((cb) => {
+                        cb(...args);
+                    });
+            }
+        };
+
+        const vm = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    gallery: false,
+                    departments: false,
+                    iiqa: false,
+                    obe: false,
+                    more: false,
+                    solutions: false,
+                    recognition: false,
+                    // more: false,
+                    menu: false
+                }
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
