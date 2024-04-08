@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy University St Lucia</title>
+
+    <link href="/dist/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+
+    <!-- Header and footer script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(function () {
+            $("#header").load("/dist/header.html");
+            $("#footer").load("/dist/footer.html");
+        });
+    </script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+
+    <script src="/dev/kennedy.js"></script>
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <div class="m-auto xl:container px-12 sm:px-0 mx-auto">
+        <div class="mx-auto h-full sm:w-max">
+            <div class="m-auto  py-12">
+
+                <div
+                    class="mt-3 rounded-3xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 -mx-6 sm:-mx-10 p-0.5 shadow-xl transition hover:shadow-sm">
+
+                    <div class="space-y-4 flex items-center justify-center">
+                        <img src="/logo.png" class="w-40" />
+                    </div>
+
+                    <div class="bg-white p-12 rounded-3xl">
+                        <h3 class="text-2xl font-semibold text-sky-700 text-center">Academic Partner Information</h3>
+                        <div class="mt-12">
+                            <div class="flex items-center mx-auto flex-col">
+                                <div
+                                    class="w-32 h-32 inline-flex items-center justify-center rounded-full bg-sky-100 text-indigo-500 flex-shrink-0">
+                                    <img src="https://img.icons8.com/external-gradient-icons-maxicons/512/external-college-knowledge-gradient-gradient-icons-maxicons.png"
+                                        alt="">
+                                </div>
+                                <div class="flex-grow text-center mt-6 border-b pb-2 mb-5 border-gray-200">
+                                    <h2 class="text-sky-900 text-xl title-font font-bold mb-2" id="instituteName">Institute Name Loading..</h2>
+                                    <h2 class="text-sky-900 text-xl title-font font-bold mb-2" id="centerCode">Center Code Loading..</h2>
+                                </div>
+
+
+                                <section class="text-gray-600 body-font">
+                                    <div class="">
+                                        <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Institute Type :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="instituteType">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Contact Person :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="contactPerson">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Contact Number :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="contactNumber">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Country :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="country">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        State :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="state">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Address :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="address">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Website :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="website">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Email :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="email">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Work Permit Area :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg" id="workPermitArea">
+                                                        loading..</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- <div class="flex items-center justify-center mt-6">
+                                    <button
+                                        class="p-4 rounded-xl shadow-xl bg-sky-100/50 text-lg text-sky-800 hover:bg-sky-800 hover:text-white font-semibold">
+                                        Download Card</button>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="footer"></div>
+
+</body>
+
+<script>
+    window.onload = function () {
+        init();
+    }
+    let centerCode = "";
+    let center;
+    let centerCodeInput = document.getElementById("centerCode");
+    let instituteNameInput = document.getElementById("instituteName");
+    let instituteTypeInput = document.getElementById("instituteType");
+    let contactPersonInput = document.getElementById("contactPerson");
+    let contactNumberInput = document.getElementById("contactNumber");
+    let countryInput = document.getElementById("country");
+    let stateInput = document.getElementById("state");
+    let addressInput = document.getElementById("address");
+    let websiteInput = document.getElementById("website");
+    let emailInput = document.getElementById("email");
+    let workPermitAreaInput = document.getElementById("workPermitArea");
+    function init() {
+        const params = new URLSearchParams(document.location.search);
+        centerCode = params.get("code");
+        const action = params.get("action");
+        console.log(centerCode); //show C
+        if (!centerCode || typeof centerCode !== "string" || centerCode.length <= 1) {
+            alert("Invalid page request");
+            return history.back();
+        }
+        //get center data and display fields
+        getCenterByCode(centerCode, function (res) {
+            if (res.data.length != 1) {
+                return alert ("Found: " + res.message);
+            }
+            center = res.data[0];
+            centerCodeInput.innerHTML = center.code;
+            instituteNameInput.innerHTML = center.name;
+            instituteTypeInput.innerHTML = center.type;
+            contactPersonInput.innerHTML = center.contactName;
+            contactNumberInput.innerHTML = center.contactNumber;
+            countryInput.innerHTML = center.country;
+            stateInput.innerHTML = center.state;
+            addressInput.innerHTML = center.address;
+            websiteInput.innerHTML = center.website;
+            emailInput.innerHTML = center.contactEmail;
+            workPermitAreaInput.innerHTML = center.workPermitArea;
+        }, function () {
+            history.back();
+        })
+    }
+</script>
+
+</html>

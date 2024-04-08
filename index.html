@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy University St Lucia Admin Panel</title>
+    <meta name="author" content="Karthik Csv">
+    <meta name="description" content="">
+    <!-- for sorting features -->
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Tailwind -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .bg-sidebar {
+            background: #0b1846;
+        }
+
+        .cta-btn {
+            color: #121d46;
+        }
+
+        .upgrade-btn {
+            background: #0d1c54;
+        }
+
+        .upgrade-btn:hover {
+            background: #0b1a4f;
+        }
+
+        .active-nav-link {
+            background: #0b1b53;
+        }
+
+        .nav-item:hover {
+            background: #0a1643;
+        }
+
+        .account-link:hover {
+            background: #09153f;
+        }
+    </style>
+
+    <script src="/dev/kennedy.js"></script>
+
+    <!-- Header and footer script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(function () {
+            $("#header").load("/dev/admin-header.html");
+            $("#sidebar").load("/dev/admin-sidebar.html");
+        });
+    </script>
+</head>
+
+<body class="h-full">
+    <!--
+      This example requires Tailwind CSS v2.0+ 
+      
+      This example requires some changes to your config:
+      
+      ```
+      // tailwind.config.js
+      module.exports = {
+        // ...
+        plugins: [
+          // ...
+          require('@tailwindcss/forms'),
+        ],
+      }
+      ```
+    -->
+    <!--
+      This example requires updating your template:
+    
+      ```
+      <html class="h-full bg-gray-50">
+      <body class="h-full">
+      ```
+    -->
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-8">
+            <div class="">
+                <!-- <img class="mx-auto h-12 w-auto" src="/logo.png"
+                    alt="flex items-center"> -->
+                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_sop8cbmc.json"
+                    background="transparent" speed="1" style="width: 250px; height: 250px;" loop autoplay>
+                </lottie-player>
+                <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Welcome Back, Admin!</h2>
+            </div>
+            <form class="mt-8 space-y-6" action="#" method="POST">
+                <input type="hidden" name="remember" value="true">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="email-address" class="sr-only">Username</label>
+                        <input id="email" name="email" type="text" autocomplete="email"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="Username">
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" autocomplete="current-password"
+                            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                            placeholder="Password">
+                    </div>
+                </div>
+
+
+                <div>
+                    <button id="submitBtn" type="submit" onclick="onSubmit()"
+                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <!-- Heroicon name: solid/lock-closed -->
+                            <svg class="h-5 w-5 text-blue-700 group-hover:text-blue-400"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                        Sign in
+                    </button>
+                </div>
+            </form>
+            <button><a href="/public/studentCorner.html">⬅️ Go to Student Corner</a></button>
+        </div>
+    </div>
+
+    <script>
+        localStorage["aun"] = "";
+        localStorage["alt"] = "";
+        function onSubmit() {
+            let emailEle = document.getElementById("email");
+            let passwordEle = document.getElementById("password");
+            let submitBtnEle = document.getElementById("submitBtn");
+            submitBtnEle.disabled = true;
+            submitBtnEle.innerHTML = "Signing, Please wait...";
+            localStorage.setItem("aun", emailEle.value);
+            ap = passwordEle.value;
+            asi(function (res) {
+                submitBtnEle.disabled = false;
+                submitBtnEle.innerHTML = "Signin";
+                window.location.href = "/dev/admin-home.html"
+            }, function (res) {
+                submitBtnEle.disabled = false;
+                submitBtnEle.innerHTML = "Signin";
+            })
+        }
+    </script>
+</body>
+
+</html>

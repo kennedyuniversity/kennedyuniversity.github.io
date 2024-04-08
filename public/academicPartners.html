@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy University St Lucia</title>
+
+    <link href="/dist/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+
+    <!-- Header and footer script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(function () {
+            $("#header").load("/dist/header.html");
+            $("#footer").load("/dist/footer.html");
+        });
+    </script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <section class="mx-4 pb-5 flex items-center justify-center">
+        <div class="max-w-xl relative overflow-hidden text-gray-300 bg-gray-900 lg:flex rounded-2xl">
+            <div class="w-full p-12 sm:p-16 lg:px-24">
+                <div class="mx-auto lg:ml-0">
+                    <!-- <p class="text-sm font-medium">SPECIALIZATIONS IN</p> -->
+
+                    <form onsubmit="return searchCenterWithCode();">
+                        <p class="mt-2 text-xl font-bold text-white text-center">
+                            Enter AP CODE : </p>
+                        <div class="">
+                            <label class="text-xl">KUSL-</label>
+                            <input class="mt-6 text-xl text-black text-center border rounded-xl w-36" required
+                                placeholder="enter code" type="text" pattern="[0-9]{4}" size="4" maxlength="4"
+                                minlength="4" id="centerCodeInput" title="Please enter only 4 digit number" />
+                        </div>
+                        <div class="flex items-center justify-center">
+                            <button
+                                class="bg-sky-600 text-white p-4 mt-4 -pb-6 rounded-xl hover:text-sky-600 hover:bg-white"
+                                type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div id="footer"></div>
+    <script>
+
+        function searchCenterWithCode() {
+            let centerCode = centerCodeInput.value;
+            window.location.href = "/public/academicPartnersInner.html?code=KUSL-" + centerCode;
+            return false;
+        }
+    </script>
+</body>
+
+</html>

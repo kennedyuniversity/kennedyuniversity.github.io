@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kennedy University St Lucia</title>
+
+    <link href="/dist/style.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
+
+    <!-- Header and footer script -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(function () {
+            $("#header").load("/dist/header.html");
+            $("#footer").load("/dist/footer.html");
+        });
+    </script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+
+    <script src="/dev/kennedy.js"></script>
+
+    <!-- <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+</head>
+
+<body>
+
+    <div id="header" class="print:hidden"></div>
+
+    <div class="m-auto xl:container px-12 sm:px-0 mx-auto">
+        <div class="mx-auto h-full sm:w-max">
+            <div class="m-auto  py-12">
+
+                <div class="canvas_div_pdf mt-3 rounded-3xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 -mx-6 sm:-mx-10 p-0.5 shadow-xl transition hover:shadow-sm"
+                    id="targetDiv">
+
+                    <div class="space-y-4 flex items-center justify-center">
+                        <img src="/logo.png" class="w-40" />
+                    </div>
+
+                    <div class="bg-white p-12 rounded-3xl">
+                        <h3 class="text-2xl font-semibold text-sky-700 text-center">Scholar Information</h3>
+                        <div class="mt-12">
+                            <div class="flex items-center mx-auto flex-col">
+                                <div
+                                    class=" inline-flex items-center justify-center rounded-full bg-sky-100 text-indigo-500 flex-shrink-0">
+                                    <img src="https://img.icons8.com/neon/512/experimental-iphone-spinner-neon.png"
+                                        alt="" id="studentPicture" class="h-40 rounded-full object-top">
+                                </div>
+                                <div class="flex-grow text-center mt-6 border-b pb-2 mb-5 border-gray-200">
+                                    <h2 class="text-sky-900 text-xl title-font font-bold mb-2" id="fullName">Full Name
+                                        loading..</h2>
+                                    <h2 class="text-sky-900 text-xl title-font font-bold mb-2" id="endorsmentNumber">
+                                        Endorsement Number</h2>
+                                    <!-- <a class="mt-3 text-indigo-500 inline-flex items-center">Learn More
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a> -->
+                                </div>
+                                <!-- <div class="mb-10 text-left">
+                                    <h2 class="text-gray-900 text-xl title-font font-medium mb-2">Full Name</h2>
+                                </div> -->
+
+                                <section class="text-gray-600 body-font">
+                                    <div class="">
+                                        <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Father's Name :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="fatherName">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Date of Birth : (yyyy-mm-dd)</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="dob">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Gender :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="gender">loading..</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Program Applied :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="course">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Specialization :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="specialization">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Session :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="session">loading..</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        ARC Partner Code :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="partnerCode">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Training Mode :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="trainingMode">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Student Type :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="studentType">loading..</p>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <!-- <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Fastrack Month :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="fastrackMonth">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Contact Email :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="contactEmail">loading..</p>
+                                                </div>
+                                            </div>
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Contact Number :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="contactNumber">loading..</p>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <div class="flex flex-wrap -m-4">
+                                            <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Country :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="country">loading..</p>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Address :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="address">loading..</p>
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="w-72 p-4">
+                                                <div class="border border-gray-200 p-6 rounded-lg">
+
+                                                    <h2 class="text-base text-gray-900 font-medium mb-2 italic">
+                                                        Nationality :</h2>
+                                                    <p class="text-sky-800 font-semibold leading-relaxed text-lg"
+                                                        id="nationality">loading..</p>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center print:hidden">
+                <button onclick="window.print()" type="button" id="downloadbtn"
+                    class="p-4 rounded-xl shadow-xl bg-sky-100/50 text-lg text-sky-800 hover:bg-sky-800 hover:text-white font-semibold">
+                    Download Card</button>
+            </div>
+            <p class="print:hidden text-center italic pt-3 text-sm">Please adjust the settings in print control center to 'Tabloid' as paper size and enable Background graphics <span class="text-red-400">*</span></p>
+
+            <div class="flex items-center justify-center mt-2 print:hidden">
+                <button onclick="getWelcomLetter()" type="button" id="welcomeLetterBtn"
+                    class="p-4 rounded-xl shadow-xl bg-sky-100/50 text-lg text-sky-800 hover:bg-sky-800 hover:text-white font-semibold">
+                    View Welcome Letter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="card download_card_div">
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+
+            body {
+                font-size: 16px;
+                color: #404040;
+                font-family: Montserrat, sans-serif;
+                background-image: linear-gradient(to bottom right, #ff9eaa 0% 65%, #e860ff 95% 100%);
+                background-position: center;
+                background-attachment: fixed;
+                margin: 0;
+                padding: 2rem 0;
+                display: grid;
+                place-items: center;
+                box-sizing: border-box;
+            }
+
+            .card {
+                background-color: #fff;
+                width: 360px;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                border-radius: 2rem;
+                box-shadow: 0px 1rem 1.5rem rgba(0, 0, 0, 0.5);
+            }
+
+            .card .banner {
+                background-image: url("/banner.png");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 13rem;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            .card .banner img {
+                background-color: #fff;
+                width: 8rem;
+                height: 8rem;
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+                border-radius: 50%;
+                transform: translateY(50%);
+                transition: transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            }
+
+            .card .banner img:hover {
+                transform: translateY(50%) scale(1.3);
+            }
+
+            .card .menu {
+                width: 100%;
+                height: 5.5rem;
+                padding: 1rem;
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-end;
+                position: relative;
+                box-sizing: border-box;
+            }
+
+            .card .menu .opener {
+                width: 2.5rem;
+                height: 2.5rem;
+                position: relative;
+                border-radius: 50%;
+                transition: background-color 100ms ease-in-out;
+            }
+
+            .card .menu .opener:hover {
+                background-color: #f2f2f2;
+            }
+
+            .card .menu .opener span {
+                background-color: #404040;
+                width: 0.4rem;
+                height: 0.4rem;
+                position: absolute;
+                top: 0;
+                left: calc(50% - 0.2rem);
+                border-radius: 50%;
+            }
+
+            .card .menu .opener span:nth-child(1) {
+                top: 0.45rem;
+            }
+
+            .card .menu .opener span:nth-child(2) {
+                top: 1.05rem;
+            }
+
+            .card .menu .opener span:nth-child(3) {
+                top: 1.65rem;
+            }
+
+            .card h2.name {
+                text-align: center;
+                padding: 0 2rem 0.5rem;
+                margin: 0;
+            }
+
+            .card .title {
+                color: #a0a0a0;
+                font-size: 0.85rem;
+                text-align: center;
+                padding: 0 2rem 1.2rem;
+            }
+
+            .card .actions {
+                padding: 0 2rem 1.2rem;
+                display: flex;
+                flex-direction: column;
+                order: 99;
+            }
+
+            .card .actions .follow-info {
+                padding: 0 0 1rem;
+                display: flex;
+            }
+
+            .card .actions .follow-info h2 {
+                text-align: center;
+                width: 50%;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            .card .actions .follow-info h2 a {
+                text-decoration: none;
+                padding: 0.8rem;
+                display: flex;
+                flex-direction: column;
+                border-radius: 0.8rem;
+                transition: background-color 100ms ease-in-out;
+            }
+
+            .card .actions .follow-info h2 a span {
+                color: #1c9eff;
+                font-weight: bold;
+                transform-origin: bottom;
+                transform: scaleY(1.3);
+                transition: color 100ms ease-in-out;
+            }
+
+            .card .actions .follow-info h2 a small {
+                color: #afafaf;
+                font-size: 0.85rem;
+                font-weight: normal;
+            }
+
+            .card .actions .follow-info h2 a:hover {
+                background-color: #f2f2f2;
+            }
+
+            .card .actions .follow-info h2 a:hover span {
+                color: #007ad6;
+            }
+
+            .card .actions .follow-btn button {
+                color: inherit;
+                font: inherit;
+                font-weight: bold;
+                background-color: #ffd01a;
+                width: 100%;
+                border: none;
+                padding: 1rem;
+                outline: none;
+                box-sizing: border-box;
+                border-radius: 1.5rem/50%;
+                transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            }
+
+            .card .actions .follow-btn button:hover {
+                background-color: #efb10a;
+                transform: scale(1.1);
+            }
+
+            .card .actions .follow-btn button:active {
+                background-color: #e8a200;
+                transform: scale(1);
+            }
+
+            .card .desc {
+                text-align: justify;
+                padding: 0 2rem 2.5rem;
+                order: 100;
+            }
+        </style>
+        <div class="banner">
+            <img src="https://img.icons8.com/neon/512/experimental-iphone-spinner-neon.png" alt="" id="studentPicture2"
+                class="h-40 rounded-full object-top">
+        </div>
+        <div class="menu">
+            <!-- <div class="opener"><span></span><span></span><span></span></div> --
+        </div>
+        <h2 class="name font-semibold text-black">Scholar Name</h2>
+        <div class="title font-serif">SPECIALIZATION</div>
+        <div class="actions">
+            <div class="follow-info">
+                <h2><a href="#"><span>12</span><small>Father Name</small></a></h2>
+                <h2><a href="#"><span>1000</span><small>Date of Birth</small></a></h2>
+            </div>
+            <div class="follow-info">
+                <h2><a href="#"><span>12</span><small>Gender</small></a></h2>
+                <h2><a href="#"><span>1000</span><small>Program Applied</small></a></h2>
+            </div>
+            <div class="follow-info">
+                <h2><a href="#"><span>12</span><small>Session</small></a></h2>
+                <h2><a href="#"><span>1000</span><small>Country</small></a></h2>
+            </div>
+            <!-- <div class="follow-btn">
+                        <button>Follow</button>
+                    </div> --
+        </div>
+        <!-- <div class="desc">Morgan has collected ants since they were six years old and now has many dozen ants but none in
+                    their pants.</div> --
+    </div> -->
+
+
+
+    <div id="footer" class="print:hidden"></div>
+    <script>
+        function getWelcomLetter() {
+            localStorage.setItem("sName", student.name);
+            localStorage.setItem("sNumber", student.enrollmentNumber);
+            localStorage.setItem("sDate", student.atRegisteredOn.timeD);
+            localStorage.setItem("sProgram", student.enrollProgramName);
+            window.location.href = "/public/welcomeLetter/welcomeLetter.htm?id=" + student.id + "&action=view";
+        }
+        function getPDF() {
+                // imageSrc.crossOrigin = "anonymous";
+                // imageSrc2.crossOrigin = "anonymous";
+                // var imgData = getBase64Image(imageSrc);
+                // localStorage.setItem("imgData", imgData); 
+                // var dataImage = localStorage.getItem('imgData');
+            // imageSrc2.src = "data:image/png;base64," + imgData;
+            //imageSrc2.src = getBase64Image(imageSrc);
+            var HTML_Width = $(".canvas_div_pdf").width();
+            var HTML_Height = $(".canvas_div_pdf").height();
+            var top_left_margin = 15;
+            var PDF_Width = HTML_Width + (top_left_margin * 2);
+            var PDF_Height = (PDF_Width * 1.2) + (top_left_margin * 2);
+            var canvas_image_width = HTML_Width;
+            var canvas_image_height = HTML_Height;
+
+            var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+
+            html2canvas($(".canvas_div_pdf")[0], { allowTaint: true, useCORS: true }).then(function (canvas) {
+                canvas.getContext('2d');
+
+                console.log(canvas.height + "  " + canvas.width);
+
+
+                var imgData = canvas.toDataURL("image/png", 1.0);
+                var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+                pdf.addImage(imgData, 'PNG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+
+
+                for (var i = 1; i <= totalPDFPages; i++) {
+                    pdf.addPage(PDF_Width, PDF_Height);
+                    pdf.addImage(imgData, 'PNG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+                }
+
+                pdf.save("myId.pdf");
+            });
+        };
+    </script>
+    <script>
+        window.onload = function () {
+            init();
+        }
+        let enrollmentNumber = "";
+        let partnerCode = "";
+        let student;
+        let imageSrc = document.getElementById("studentPicture");
+        // let imageSrc2 = document.getElementById("studentPicture2");
+        let nameInput = document.getElementById("fullName");
+        let enrollmentNumberInput = document.getElementById("endorsmentNumber");
+        let courseInput = document.getElementById("course");
+        let specializationInput = document.getElementById("specialization");
+        let centerCodeInput = document.getElementById("partnerCode");
+        let sessionInput = document.getElementById("session");
+        let trainingModeInput = document.getElementById("trainingMode");
+        let studentTypeInput = document.getElementById("studentType");
+        let fatherNameInput = document.getElementById("fatherName");
+        let dobInput = document.getElementById("dob");
+        let genderInput = document.getElementById("gender");
+        let fastrackMonthInput = document.getElementById("fastrackMonth");
+        let contactEmailInput = document.getElementById("contactEmail");
+        let contactNumberInput = document.getElementById("contactNumber");
+        let countryInput = document.getElementById("country");
+        let addressInput = document.getElementById("address"); //I've added address and state to same p. need to check
+        let nationalityInput = document.getElementById("nationality");
+        function init() {
+            const params = new URLSearchParams(document.location.search);
+            enrollmentNumber = params.get("enrollmentNumber");
+            partnerCode = params.get("partnerCode");
+            console.log("enrollmentNumber", enrollmentNumber); //show C
+            if (!enrollmentNumber || typeof enrollmentNumber !== "string" || enrollmentNumber.length <= 1) {
+                alert("Invalid page request");
+                return history.back();
+            }
+            if (!partnerCode || typeof partnerCode !== "string" || partnerCode.length <= 1) {
+                alert("Invalid page request...");
+                return history.back();
+            }
+            //get student data and display fields
+            getStudentByEnrollmentNumberAndCenterCode(enrollmentNumber, partnerCode, function (res) {
+                if (res.data.length != 1) {
+                    // return alert("Found: " + res.message);
+                    alert("No Students found with these details, please verify again");
+                    return history.back();
+                }
+                student = res.data[0];
+                //imageSrc2.src = "C:\Users\csvk\AppData\Local\Google\Chrome\User Data\Default\Cache\Cache_Data\f_001176.jpeg";
+                imageSrc.src = student.image.startsWith("http") ? student.image : "https://firebasestorage.googleapis.com/v0/b/kennedy-university-saint-lucia.appspot.com/o/user_profile_male_default.png?alt=media&token=6c9c98bb-c78d-4da2-86d8-145ca2501d62";
+                // imageSrc2.back = student.image.startsWith("http") ? student.image : "https://img.icons8.com/neon/512/experimental-iphone-spinner-neon.png";
+                // imageSrc.src = "https://play-lh.googleusercontent.com/RZ5luCUwc5QtJP9xDn-ZCwEutT160GVyoh5K1eu4YJ5fD7v4LP5ptVdgR9mz4Hnr7A";
+                nameInput.innerHTML = student.name;
+                enrollmentNumberInput.innerHTML = student.enrollmentNumber;
+                courseInput.innerHTML = student.enrollProgramName;
+                specializationInput.innerHTML = student.specialization;
+                // centerCodeInput.innerHTML = student.centerName + " (" + student.centerCode + ")";
+                sessionInput.innerHTML = student.yearOfSession;
+                // trainingModeInput.innerHTML = student.trainingMode;
+                // studentTypeInput.innerHTML = student.studentType;
+                fatherNameInput.innerHTML = student.fatherName;
+                dobInput.innerHTML = student.dob;
+                genderInput.innerHTML = student.gender;
+                // fastrackMonthInput.innerHTML = student.fastTrackMonth;
+                // contactEmailInput.innerHTML = student.contactEmail;
+                // contactNumberInput.innerHTML = student.contactNumber;
+                countryInput.innerHTML = student.country;
+                // addressInput.innerHTML = student.state + ", " + student.address;
+                // addressInput.innerHTML = student.address;
+                // nationalityInput.innerHTML = student.nationality;
+            }, function () {
+                history.back();
+            })
+        }
+
+        // function htmlToPdf() {
+        //     window.jsPDF = window.jspdf.jsPDF;
+
+        //     var doc = new jsPDF();
+        //     // Source HTMLElement or a string containing HTML.
+        //     var elementHTML = document.querySelector("#targetDiv");
+
+        //     doc.html(elementHTML, {
+        //         callback: function (doc) {
+        //             // Save the PDF
+        //             doc.save('id.pdf');
+        //         },
+        //         margin: [10, 10, 10, 10],
+        //         autoPaging: 'text',
+        //         x: 0,
+        //         y: 0,
+        //         width: 190, // Target width in the PDF document
+        //         windowWidth: 675 // Window width in CSS pixels
+        //     });
+        // }
+        function getBase64Image(img) {
+            var canvas = document.createElement("canvas");
+            canvas.allowTaint = true;
+            canvas.useCORS = true;
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0);
+
+            var dataURL = canvas.toDataURL("image/png");
+            // var dataURL = canvas.toDataURL();
+            // return dataURL;
+            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        }
+    </script>
+</body>
+
+</html>

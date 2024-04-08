@@ -1,0 +1,60 @@
+<style>
+
+    .bg-sidebar {
+        background: #0b1846;
+    }
+
+    .cta-btn {
+        color: #121d46;
+    }
+
+    .upgrade-btn {
+        background: #0d1c54;
+    }
+
+    .upgrade-btn:hover {
+        background: #0b1a4f;
+    }
+
+    .active-nav-link {
+        background: #0b1b53;
+    }
+
+    .nav-item:hover {
+        background: #0a1643;
+    }
+
+    .account-link:hover {
+        background: #09153f;
+    }
+</style>
+<aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+    <div class="p-6">
+        <a class="text-white text-3xl font-semibold uppercase hover:text-gray-800">Admin</a>
+        <!-- <a href="/dev/admin-uploadJournal.html"><button
+                class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-800 hover:text-white flex items-center justify-center">
+                <i class="fas fa-plus mr-3"></i> Upload Journal
+            </button></a> -->
+    </div>
+    <nav class="text-white text-base font-semibold pt-3">
+        <a href="/dev/admin-home.html" id="studentsMenu"
+            class="flex items-center text-white py-4 pl-6 nav-item hover:bg-white hover:text-white">
+            <i class="fas fa-table mr-3"></i>
+            Students
+        </a>
+        <a href="/dev/admin-courses.html" id="coursesMenu"
+            class="flex items-center text-white hover:opacity-100 py-4 pl-6 nav-item">
+            <i class="fas fa-news mr-3"></i>
+            Courses
+        </a>
+        <a href="/dev/admin-center.html" id="centersMenu" class="flex items-center text-white hover:opacity-100 py-4 pl-6 nav-item">
+            <i class="fas fa-align-left mr-3"></i>
+            Centers
+        </a>
+    </nav>
+    <a href="/index.html"
+        class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
+        <i class="fas fa-arrow-circle-up mr-3"></i>
+        GO to Website
+    </a>
+</aside>
