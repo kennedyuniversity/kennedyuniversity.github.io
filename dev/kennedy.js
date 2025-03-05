@@ -854,7 +854,7 @@ function getCenterByCode(centerCode, onSuccess, onError, hideAlert) {
 }
 
 function getStudents(onSuccess, onError, hideAlert) {
-    let url = getBaseURL() + "/students";
+    let url = getBaseURL() + "/students?limit=1000";
     let headers = getAdminHeaders();
     callAPI(url, function (err, response) {
         if (err) {
