@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kennedy University St Lucia</title>
-
+    <title>Kennedy University</title>
     <link href="/dist/style.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
@@ -234,7 +233,8 @@
                     class="p-4 rounded-xl shadow-xl bg-sky-100/50 text-lg text-sky-800 hover:bg-sky-800 hover:text-white font-semibold">
                     Download Card</button>
             </div>
-            <p class="print:hidden text-center italic pt-3 text-sm">Please adjust the settings in print control center to 'Tabloid' as paper size and enable Background graphics <span class="text-red-400">*</span></p>
+            <p class="print:hidden text-center italic pt-3 text-sm">Please adjust the settings in print control center
+                to 'Tabloid' as paper size and enable Background graphics <span class="text-red-400">*</span></p>
 
             <div class="flex items-center justify-center mt-2 print:hidden">
                 <button onclick="getWelcomLetter()" type="button" id="welcomeLetterBtn"
@@ -478,11 +478,11 @@
             window.location.href = "/public/welcomeLetter/welcomeLetter.htm?id=" + student.id + "&action=view";
         }
         function getPDF() {
-                // imageSrc.crossOrigin = "anonymous";
-                // imageSrc2.crossOrigin = "anonymous";
-                // var imgData = getBase64Image(imageSrc);
-                // localStorage.setItem("imgData", imgData); 
-                // var dataImage = localStorage.getItem('imgData');
+            // imageSrc.crossOrigin = "anonymous";
+            // imageSrc2.crossOrigin = "anonymous";
+            // var imgData = getBase64Image(imageSrc);
+            // localStorage.setItem("imgData", imgData); 
+            // var dataImage = localStorage.getItem('imgData');
             // imageSrc2.src = "data:image/png;base64," + imgData;
             //imageSrc2.src = getBase64Image(imageSrc);
             var HTML_Width = $(".canvas_div_pdf").width();
